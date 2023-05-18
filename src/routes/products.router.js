@@ -18,11 +18,29 @@ router.get( '/insertion', ( req, res ) => {
 // GET
 router.get( '/', async ( req, res ) => {
 
-    const result = await productsModel.find();
+    const { page = 1, limit = 10, query, sort } = req.query;
 
+    // const products = await productsModel.find().lean();
     manager.registerLog( 'Products request' );
 
-    res.send({ result });
+    const { docs, hasPrevPage, hasNextPage, prevPage, nextPage } = 
+        await productsModel.paginate( {}, {
+            limit,
+            page,
+            query,
+            sort,
+            lean: true
+        });
+
+    const products = docs;
+
+    res.render( 'products', {
+        products,
+        hasPrevPage,
+        hasNextPage,
+        prevPage,
+        nextPage
+    });
 });
 
 // GET by ID

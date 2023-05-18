@@ -1,17 +1,14 @@
-<table>
-    <thead>
-        <tr>
-            <th>Title</th>
-            <th>Description</th>
-            <th>{{Price}}</th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-        {{#each result}}
-            <tr>
-                <td>{{ this.title}}</td>
-            </tr>
-        {{/each}}
-    </tbody>
-</table>
+{{#each products}}
+    <h1>{{ this.title }}</h1>
+    <p>{{ this.description }}</p>
+{{/each}}
+
+{{#if hasPrevPage}}
+    <a href="/?page={{prevPage}}"><button>Previous</button></a>
+{{/if}}
+
+{{#if hasNextPage}}
+    <a href="/?page={{nextPage}}"><button>Next</button></a>
+{{/if}}
+
+

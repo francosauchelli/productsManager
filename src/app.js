@@ -3,7 +3,7 @@ import handlebars from 'express-handlebars';
 import mongoose from 'mongoose';
 
 import __dirname from './utils.js';
-import viewsRouter from './routes/views.router.js';
+// import viewsRouter from './routes/views.router.js';
 import productsRouter from './routes/products.router.js';
 
 
@@ -28,6 +28,5 @@ app.listen( PORT, () => {
     console.log( `Server connected to port: ${ PORT }`);
 });
 
-app.use( '/', viewsRouter );
-app.use( '/api/products', productsRouter );
+app.use( '/', productsRouter );
 
