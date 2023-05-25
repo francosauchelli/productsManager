@@ -1,0 +1,14 @@
+{{#each products}}
+    <h1>{{ this.title }}</h1>
+    <p>{{ this.description }}</p>
+{{/each}}
+
+{{#if hasPrevPage}}
+    <a href="/?page={{prevPage}}"><button>Previous</button></a>
+{{/if}}
+
+{{#if hasNextPage}}
+    <a href="/?page={{nextPage}}"><button>Next</button></a>
+{{/if}}
+
+
